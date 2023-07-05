@@ -4,10 +4,10 @@ import java.util.List;
 
 public class AddElementTask implements Runnable {
 
-    private List<String> myList;
+    private MyList myList;
     private int threadNumber;
 
-    public AddElementTask(List<String> myList, int threadNumber) {
+    public AddElementTask(MyList myList, int threadNumber) {
         this.myList = myList;
         this.threadNumber = threadNumber;
     }
@@ -15,7 +15,7 @@ public class AddElementTask implements Runnable {
     @Override
     public void run() {
         for(int i = 0; i<100; i++){
-            myList.add("Thread " + threadNumber + " - " + i);
+            myList.addElement("Thread " + threadNumber + " - " + i);
         }
     }
 }

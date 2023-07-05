@@ -7,6 +7,17 @@ public class MyList {
     public synchronized void addElement(String element) {
         this.listOfElements[index] = element;
         this.index++;
+
+//        try{
+//            Thread.sleep(10);
+//        }catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
+
+        if(this.index == this.listOfElements.length){
+            System.out.println("MyList is full, notifying!");
+            this.notify();
+        }
     }
 
     public int size(){
@@ -15,5 +26,10 @@ public class MyList {
 
     public String getElement(int position){
         return this.listOfElements[position];
+    }
+
+    public boolean isFull() {
+
+        return this.index == this.size();
     }
 }

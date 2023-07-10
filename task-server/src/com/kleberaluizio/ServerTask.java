@@ -14,7 +14,10 @@ public class ServerTask {
             Socket socket = server.accept();
             System.out.println("New client accepted " + socket.getPort());
 
-            Thread.sleep(20000);
+            DistributeTask distributeTask = new DistributeTask(socket);
+            Thread threadClient = new Thread(distributeTask);
+            threadClient.start();
+
         }
     }
 }
